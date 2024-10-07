@@ -26,7 +26,7 @@ export default function Header() {
 
         <div className="flex justify-end gap-3 w-36">
           <SignedIn>
-            <UserButton afterSwitchSessionUrl="/"></UserButton>
+            <UserButton></UserButton>
             <MobileNav />
           </SignedIn>
           <SignedOut>
