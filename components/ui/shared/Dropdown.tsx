@@ -18,9 +18,10 @@ import {
 } from "@/components/ui/alert-dialog";
 
 import {ICategory} from "@/lib/database/models/category.model";
-import {startTransition, useState} from "react";
+import {startTransition, useEffect, useState} from "react";
 import {Input} from "../input";
 import {SquarePlus} from "lucide-react";
+import {createCategory, getAllCategories} from "@/lib/actions/category.actions";
 
 type DropdownProps = {
   onChangeHandler?: () => void;
@@ -31,7 +32,19 @@ export default function Dropdown({onChangeHandler, value}: DropdownProps) {
   const [categories, setCategories] = useState<ICategory[]>([]);
   const [newCategory, setNewcategory] = useState("");
 
-  const handleAddCategory = () => {};
+  const handleAddCategory = () => {
+    createCategory({categoryName: newCategory.trim()}).then((category) => {
+      setCategories((prevState) => [...prevState, category]);
+    });
+  };
+
+  useEffect(() => {
+    const getCategories = async () => {
+      const categoryList = await getAllCategories();
+      categoryList && setCategories(categoryList);
+    };
+    getCategories();
+  }, [categories]);
 
   return (
     <Select onValueChange={onChangeHandler} defaultValue={value}>

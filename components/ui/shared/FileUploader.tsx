@@ -1,21 +1,23 @@
-import {Dispatch, SetStateAction, useCallback} from "react";
+"use client";
 
-type FileUploadProps = {
+import {useCallback, Dispatch, SetStateAction} from "react";
+import {useDropzone} from "@uploadthing/react";
+import {generateClientDropzoneAccept} from "uploadthing/client";
+
+import {Button} from "@/components/ui/button";
+import {convertFileToUrl} from "@/lib/utils";
+
+type FileUploaderProps = {
+  onFieldChange: (url: string) => void;
   imageUrl: string;
-  onFieldChange: (value: string) => void;
   setFiles: Dispatch<SetStateAction<File[]>>;
 };
 
-import {useDropzone} from "@uploadthing/react";
-import {generateClientDropzoneAccept} from "uploadthing/client";
-import {convertFileToUrl} from "@/lib/utils";
-import {Button} from "../button";
-
-export default function FileUploader({
+export function FileUploader({
   imageUrl,
   onFieldChange,
   setFiles,
-}: FileUploadProps) {
+}: FileUploaderProps) {
   const onDrop = useCallback((acceptedFiles: File[]) => {
     setFiles(acceptedFiles);
     onFieldChange(convertFileToUrl(acceptedFiles[0]));
@@ -23,7 +25,7 @@ export default function FileUploader({
 
   const {getRootProps, getInputProps} = useDropzone({
     onDrop,
-    accept: "image/*" ? generateClientDropzoneAccept(["image/*"]) : undefined,
+    accept: generateClientDropzoneAccept(["image/*"]),
   });
 
   return (
@@ -54,7 +56,7 @@ export default function FileUploader({
           <h3 className="mb-2 mt-2">Drag photo here</h3>
           <p className="p-medium-12 mb-4">SVG, PNG, JPG</p>
           <Button type="button" className="rounded-full">
-            Select from Computer
+            Select from computer
           </Button>
         </div>
       )}
