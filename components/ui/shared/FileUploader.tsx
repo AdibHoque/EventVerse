@@ -56,7 +56,7 @@ export function FileUploader({
           <h3 className="mb-2 mt-2">Drag photo here</h3>
           <p className="p-medium-12 mb-4">SVG, PNG, JPG</p>
           <Button type="button" className="rounded-full">
-            Select from computer
+            Select from Device
           </Button>
         </div>
       )}

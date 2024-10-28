@@ -44,7 +44,7 @@ export default function Dropdown({onChangeHandler, value}: DropdownProps) {
       categoryList && setCategories(categoryList);
     };
     getCategories();
-  }, [categories]);
+  }, []);
 
   return (
     <Select onValueChange={onChangeHandler} defaultValue={value}>
