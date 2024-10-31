@@ -4,6 +4,7 @@ import Link from "next/link";
 import {Button} from "../button";
 import NavItems from "./NavItems";
 import MobileNav from "./MobileNav";
+import {ModeToggle} from "./ThemeButton";
 
 export default function Header() {
   return (
@@ -25,6 +26,7 @@ export default function Header() {
         </SignedIn>
 
         <div className="flex justify-end gap-3 w-36">
+          <ModeToggle></ModeToggle>
           <SignedIn>
             <UserButton></UserButton>
             <MobileNav />
