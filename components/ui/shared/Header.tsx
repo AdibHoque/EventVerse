@@ -5,18 +5,14 @@ import {Button} from "../button";
 import NavItems from "./NavItems";
 import MobileNav from "./MobileNav";
 import {ModeToggle} from "./ThemeButton";
+import EventVerseLogo from "./Logo";
 
 export default function Header() {
   return (
     <header className="w-full border-b">
       <div className="wrapper flex items-center justify-between">
         <Link href="/" className="w-36">
-          <Image
-            src="/assets/images/logo.svg"
-            alt="logo"
-            width={128}
-            height={38}
-          ></Image>
+          <EventVerseLogo />
         </Link>
 
         <SignedIn>
@@ -25,7 +21,7 @@ export default function Header() {
           </nav>
         </SignedIn>
 
-        <div className="flex justify-end gap-3 w-36">
+        <div className="flex items-center justify-end gap-3 w-36">
           <ModeToggle></ModeToggle>
           <SignedIn>
             <UserButton></UserButton>

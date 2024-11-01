@@ -16,7 +16,7 @@ export default async function Home() {
     <>
       <section
         id="hero"
-        className="bg-dotted-pattern bg-primary-50 bg-contain py-5 md:py-10"
+        className="bg-dotted-pattern bg-primary-50 dark:bg-black/15 bg-contain py-5 md:py-10"
       >
         <div className="wrapper grid grid-cols-1 gap-5 md:grid-cols-2 2xl:gap-0">
           <div className="flex flex-col justify-center gap-8">

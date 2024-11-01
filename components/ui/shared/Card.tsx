@@ -17,7 +17,7 @@ export default function Card({event, hasOrderLink, hidePrice}: CardProps) {
   const isEventCreator = userId === event.organizer._id.toString();
 
   return (
-    <div className="group relative flex min-h-[380px] w-full max-w-[400px] flex-col overflow-hidden rounded-xl bg-white shadow-md transition-all hover:shadow-lg md:min-h-[438px]">
+    <div className="group relative flex min-h-[380px] w-full max-w-[400px] flex-col overflow-hidden rounded-xl bg-white dark:bg-black/10 shadow-md transition-all hover:shadow-lg md:min-h-[438px]">
       <Link
         href={`/events/${event._id}`}
         style={{backgroundImage: `url(${event.imageUrl})`}}
@@ -52,7 +52,7 @@ export default function Card({event, hasOrderLink, hidePrice}: CardProps) {
         <p className="p-medium-16 md:p-medium-18 text-grey-500">
           {formatDateTime(event.startDateTime).dateTime}
         </p>
-        <p className="p-medium-16 md:p-medium-20 line-clamp-2 flex-1 text-black">
+        <p className="p-medium-16 md:p-medium-20 line-clamp-2 flex-1 text-black dark:text-white">
           {event.title}
         </p>
         <div className="flex-between w-full">
