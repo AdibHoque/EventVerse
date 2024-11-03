@@ -3,6 +3,7 @@ import {formatDateTime} from "@/lib/utils";
 import Link from "next/link";
 import {auth} from "@clerk/nextjs/server";
 import Image from "next/image";
+import {DeleteConfirmation} from "./DeleteConfirmation";
 
 type CardProps = {
   event: IEvent;
@@ -24,7 +25,7 @@ export default function Card({event, hasOrderLink, hidePrice}: CardProps) {
         className="flex-center flex-grow bg-gray-50 bg-cover bg-center text-grey-500"
       />
       {isEventCreator && !hidePrice && (
-        <div className="absolute right-2 top-2 flex flex-col gap-4 rounded-xl bg-white p-3 shadow-sm transition-all">
+        <div className="absolute right-2 top-2 flex flex-col gap-4 rounded-xl bg-white dark:bg-black/80 p-3 shadow-sm transition-all">
           <Link href={`/events/${event._id}/update`}>
             <Image
               src="/assets/icons/edit.svg"
@@ -33,6 +34,7 @@ export default function Card({event, hasOrderLink, hidePrice}: CardProps) {
               height={20}
             />
           </Link>
+          <DeleteConfirmation eventId={event._id} />
         </div>
       )}
       <Link

@@ -9,7 +9,7 @@ import EventVerseLogo from "./Logo";
 
 export default function Header() {
   return (
-    <header className="w-full border-b">
+    <header className="w-full border-b dark:border-b-black">
       <div className="wrapper flex items-center justify-between">
         <Link href="/" className="w-36">
           <EventVerseLogo />

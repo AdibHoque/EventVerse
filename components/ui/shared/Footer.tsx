@@ -4,7 +4,7 @@ import EventVerseLogo from "./Logo";
 
 export default function Footer() {
   return (
-    <footer className="border-t">
+    <footer className="border-t dark:border-t-black">
       <div className="flex-center wrapper flex flex-between flex-col gap-4 p-5 text-center sm:flex-row">
         <Link href="/" className="w-36">
           <EventVerseLogo />
