@@ -26,7 +26,7 @@ export default function Collection({
     <>
       {data.length > 0 ? (
         <div className="flex flex-col items-center gap-10">
-          <ul className="w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 xl:gap-10">
+          <ul className="grid w-full grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:gap-10">
             {data.map((event) => {
               const hasOrderLink = collectionType === "Events_Organized";
               const hidePrice = collectionType === "My_Tickets";
@@ -43,7 +43,7 @@ export default function Collection({
           </ul>
         </div>
       ) : (
-        <div className="flex flex-col wrapper gap-3 min-h-[200px] w-full rounded-[14px] py-28 text-center bg-grey-50">
+        <div className="flex flex-col wrapper gap-3 min-h-[200px] w-full rounded-[14px] py-28 text-center justify-center items-center bg-grey-50 dark:bg-gray-700">
           <h3 className="p-bold-20 md:h5-bold">{emptyTitle}</h3>
           <p className="p-regular-14">{emptyStateSubtext}</p>
         </div>
