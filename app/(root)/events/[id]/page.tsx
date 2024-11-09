@@ -23,7 +23,7 @@ export default async function EventDetails({
   return (
     <>
       <section className="flex justify-center bg-primary-50 dark:bg-black/15 bg-dotted-pattern bg-contain">
-        <div className="grid grid-cols-1 md:grid-cols-2 2xl:max-w-7xl ">
+        <div className="grid grid-cols-1 md:grid-cols-2 2xl:max-w-6xl ">
           <Image
             src={event.imageUrl}
             alt="Event Image"

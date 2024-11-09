@@ -1,13 +1,14 @@
+"use client";
+
 import {IEvent} from "@/lib/database/models/event.model";
 import {SignedIn, SignedOut, useUser} from "@clerk/nextjs";
 import {Button} from "../button";
 import Link from "next/link";
-import {auth} from "@clerk/nextjs/server";
 import Checkout from "./Checkout";
 
 export default function CheckoutButton({event}: {event: IEvent}) {
-  const {sessionClaims} = auth();
-  const userId = sessionClaims?.userId as string;
+  const {user} = useUser();
+  const userId = user?.publicMetadata.userId as string;
   const isEventClosed = new Date(event.endDateTime) < new Date();
 
   return (

@@ -1,5 +1,3 @@
-"use client";
-
 import {IEvent} from "@/lib/database/models/event.model";
 import {Button} from "../button";
 import {loadStripe} from "@stripe/stripe-js";
@@ -8,7 +6,7 @@ import {checkoutOrder} from "@/lib/actions/order.actions";
 
 loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY!);
 
-export default async function Checkout({
+export default function Checkout({
   event,
   userId,
 }: {
