@@ -206,7 +206,7 @@ body {
 
   /* SHADCN OVERRIDES */
   .select-field {
-    @apply w-full bg-gray-50 dark:bg-black/15 h-[54px] text-gray-500 dark:text-gray-300 placeholder:text-gray-500 dark:placeholder:text-gray-400 rounded-full p-regular-16 px-5 py-3 border-none focus-visible:ring-transparent focus:ring-transparent !important;
+    @apply bg-gray-50 dark:bg-black/15 h-[54px] focus-visible:ring-offset-0 placeholder:text-gray-500 dark:placeholder:text-gray-400 rounded-full p-regular-16 px-4 py-3 border-none focus-visible:ring-transparent !important;
   }
 
   .input-field {
@@ -222,7 +222,7 @@ body {
   }
 
   .select-item {
-    @apply py-3 cursor-pointer  focus:bg-primary-50;
+    @apply py-3 cursor-pointer  focus:bg-primary-50 dark:focus:bg-black/15;
   }
 
   .toggle-switch {

@@ -43,7 +43,7 @@ export default function Collection({
           </ul>
         </div>
       ) : (
-        <div className="flex flex-col wrapper gap-3 min-h-[200px] w-full rounded-[14px] py-28 text-center justify-center items-center bg-grey-50 dark:bg-gray-700">
+        <div className="flex flex-col wrapper gap-3 min-h-[200px] w-full rounded-[14px] py-28 text-center justify-center items-center bg-grey-50 dark:bg-black">
           <h3 className="p-bold-20 md:h5-bold">{emptyTitle}</h3>
           <p className="p-regular-14">{emptyStateSubtext}</p>
         </div>

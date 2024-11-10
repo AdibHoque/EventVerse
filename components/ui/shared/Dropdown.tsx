@@ -41,7 +41,7 @@ export default function Dropdown({onChangeHandler, value}: DropdownProps) {
   useEffect(() => {
     const getCategories = async () => {
       const categoryList = await getAllCategories();
-      categoryList && setCategories(categoryList);
+      categoryList && setCategories(categoryList as ICategory[]);
     };
     getCategories();
   }, []);

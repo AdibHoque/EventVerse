@@ -1,4 +1,5 @@
 import {Button} from "@/components/ui/button";
+import CategoryFilter from "@/components/ui/shared/CategoryFilter";
 import Collection from "@/components/ui/shared/Collection";
 import Search from "@/components/ui/shared/Search";
 import {getAllEvents} from "@/lib/actions/event.actions";
@@ -10,12 +11,7 @@ export default async function Home({searchParams}: SearchParamProps) {
   const page = Number(searchParams?.page) || 1;
   const query = (searchParams?.query as string) || "";
   const category = (searchParams?.category as string) || "";
-  console.log({
-    query: query,
-    category,
-    page,
-    limit: 6,
-  });
+
   const events = await getAllEvents({
     query: query,
     category,
@@ -58,13 +54,14 @@ export default async function Home({searchParams}: SearchParamProps) {
         <h2 className="h2-bold">
           Trusted by<br></br>Thousands of Events
         </h2>
-        <Search placeholder="Search Event..." />
+
         <div className="flex flex-col w-full gap-5 md:flex-row">
-          Search Category
+          <Search placeholder="Search Event..." />
+          <CategoryFilter />
         </div>
         <Collection
           data={events?.data}
-          emptyTitle="Not Found"
+          emptyTitle="Not Event Found"
           emptyStateSubtext="Come back later"
           collectionType="All_Events"
           limit={6}
