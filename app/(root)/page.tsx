@@ -1,15 +1,26 @@
 import {Button} from "@/components/ui/button";
 import Collection from "@/components/ui/shared/Collection";
+import Search from "@/components/ui/shared/Search";
 import {getAllEvents} from "@/lib/actions/event.actions";
+import {SearchParamProps} from "@/types";
 import Image from "next/image";
 import Link from "next/link";
 
-export default async function Home() {
-  const events = await getAllEvents({
-    query: "",
-    category: "",
+export default async function Home({searchParams}: SearchParamProps) {
+  const page = Number(searchParams?.page) || 1;
+  const query = (searchParams?.query as string) || "";
+  const category = (searchParams?.category as string) || "";
+  console.log({
+    query: query,
+    category,
+    page,
     limit: 6,
-    page: 1,
+  });
+  const events = await getAllEvents({
+    query: query,
+    category,
+    page,
+    limit: 6,
   });
 
   return (
@@ -47,6 +58,7 @@ export default async function Home() {
         <h2 className="h2-bold">
           Trusted by<br></br>Thousands of Events
         </h2>
+        <Search placeholder="Search Event..." />
         <div className="flex flex-col w-full gap-5 md:flex-row">
           Search Category
         </div>
