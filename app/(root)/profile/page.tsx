@@ -5,7 +5,40 @@ import {getOrdersByUser} from "@/lib/actions/order.actions";
 import {IOrder} from "@/lib/database/models/order.model";
 import {SearchParamProps} from "@/types";
 import {auth} from "@clerk/nextjs/server";
+import {Metadata} from "next";
 import Link from "next/link";
+
+export const metadata: Metadata = {
+  title: "My Profile - EventVerse",
+  description:
+    "Manage your event tickets and organized events on EventVerse. View your upcoming events and create new experiences.",
+  icons: {
+    icon: "/assets/images/logo.svg",
+    shortcut: "/assets/images/logo.svg",
+  },
+  openGraph: {
+    title: "My Profile - EventVerse",
+    description:
+      "Explore and manage your tickets and organized events. EventVerse offers a personalized space to track your events and create new ones.",
+    url: "https://eventversely.vercel.app/profile",
+    images: [
+      {
+        url: "/assets/images/og-image.webp",
+        width: 800,
+        height: 600,
+        alt: "Create Event on EventVerse",
+      },
+    ],
+    siteName: "EventVerse",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "My Profile - EventVerse",
+    description:
+      "Manage your event tickets and organized events in one place. Easily access your past and upcoming events with EventVerse.",
+    images: ["/assets/images/og-image.webp"],
+  },
+};
 
 export default async function ProfilePage({searchParams}: SearchParamProps) {
   const {sessionClaims} = auth();

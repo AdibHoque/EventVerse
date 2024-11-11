@@ -9,6 +9,56 @@ import {SearchParamProps} from "@/types";
 import Image from "next/image";
 import React from "react";
 
+import type {Metadata, ResolvingMetadata} from "next";
+import Link from "next/link";
+
+type Props = {
+  params: Promise<{id: string}>;
+  searchParams: Promise<{[key: string]: string | string[] | undefined}>;
+};
+
+export async function generateMetadata(
+  {params, searchParams}: Props,
+  parent: ResolvingMetadata
+): Promise<Metadata> {
+  const id = (await params).id;
+
+  const event = await getEventById(id);
+  return {
+    title: `Event Details - ${event.title} - EventVerse`,
+    description: `${event.description}\nJoin the ${event.title} event, organized by ${event.organizer.firstName} ${event.organizer.lastName}.`,
+    icons: {
+      icon: "/assets/images/logo.svg",
+      shortcut: "/assets/images/logo.svg",
+    },
+    openGraph: {
+      title: `Event Details - ${event.title} - EventVerse`,
+      description:
+        event.description ||
+        `Don't miss out on ${event.title} hosted by ${event.organizer.firstName} ${event.organizer.lastName}.`,
+      url: `https://www.eventverse.com/event/${id}`,
+      images: [
+        {
+          url: event.imageUrl,
+          width: 800,
+          height: 600,
+          alt: `Event: ${event.title}`,
+        },
+      ],
+      siteName: "EventVerse",
+      locale: "en_US",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `Event Details - ${event.title} - EventVerse`,
+      description:
+        event.description ||
+        `Join us for ${event.title}, hosted by ${event.organizer.firstName} ${event.organizer.lastName}.`,
+      images: [event.imageUrl],
+    },
+  };
+}
+
 export default async function EventDetails({
   params: {id},
   searchParams,
@@ -20,6 +70,7 @@ export default async function EventDetails({
     eventId: event._id,
     page: searchParams.page as string,
   });
+
   return (
     <>
       <section className="flex justify-center bg-primary-50 dark:bg-black/15 bg-dotted-pattern bg-contain">
@@ -40,9 +91,11 @@ export default async function EventDetails({
                   <p className="p-bold-20 rounded-full bg-green-500/10 px-5 py-2 text-green-700">
                     {event.isFree ? "FREE" : `$${event.price}`}
                   </p>
-                  <p className="p-medium-16 rounded-full bg-grey-500/10 px-4 py-2.5 text-grey-500">
-                    {event.category.name}
-                  </p>
+                  <Link href={`/?category=${event.category.name}#events`}>
+                    <p className="hover:text-primary p-medium-16 rounded-full bg-grey-500/10 px-4 py-2.5 text-grey-500">
+                      #{event.category.name}
+                    </p>
+                  </Link>
                 </div>
                 <p className="p-medium-18 ml-2 mt-2 sm:mt-0">
                   By{" "}
