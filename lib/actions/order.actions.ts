@@ -150,7 +150,7 @@ export async function getOrdersByUser({
         populate: {
           path: "organizer",
           model: User,
-          select: "_id firstName lastName",
+          select: "_id firstName lastName username",
         },
       });
 
@@ -164,5 +164,17 @@ export async function getOrdersByUser({
     };
   } catch (error) {
     handleError(error);
+  }
+}
+
+// Get Order Count by ID
+export async function getOrderCountByEvent(eventId: string) {
+  try {
+    const eventObjectId = new ObjectId(eventId);
+    const count = await Order.countDocuments({event: eventObjectId});
+    return count;
+  } catch (error) {
+    console.error("Error counting orders:", error);
+    throw error;
   }
 }

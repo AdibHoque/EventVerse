@@ -91,6 +91,7 @@ export type Event = {
     _id: string;
     firstName: string;
     lastName: string;
+    username: string;
   };
   category: {
     _id: string;

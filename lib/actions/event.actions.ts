@@ -26,7 +26,7 @@ const populateEvent = (query: any) => {
     .populate({
       path: "organizer",
       model: User,
-      select: "_id firstName lastName",
+      select: "_id firstName lastName username",
     })
     .populate({path: "category", model: Category, select: "_id name"});
 };
@@ -36,8 +36,8 @@ export async function createEvent({userId, event, path}: CreateEventParams) {
   try {
     await connectToDatabase();
 
-    // const organizer = await User.findById(userId);
-    // if (!organizer) throw new Error("Organizer not found");
+    const organizer = await User.findById(userId);
+    if (!organizer) throw new Error("Organizer not found");
 
     const newEvent = await Event.create({
       ...event,

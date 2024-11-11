@@ -4,6 +4,7 @@ import Link from "next/link";
 import {auth} from "@clerk/nextjs/server";
 import Image from "next/image";
 import {DeleteConfirmation} from "./DeleteConfirmation";
+import {getOrderCountByEvent} from "@/lib/actions/order.actions";
 
 type CardProps = {
   event: IEvent;
@@ -11,11 +12,15 @@ type CardProps = {
   hidePrice?: boolean;
 };
 
-export default function Card({event, hasOrderLink, hidePrice}: CardProps) {
+export default async function Card({
+  event,
+  hasOrderLink,
+  hidePrice,
+}: CardProps) {
   const {sessionClaims} = auth();
   const userId = sessionClaims?.userId as string;
-
-  const isEventCreator = userId === event.organizer._id.toString();
+  const participants = await getOrderCountByEvent(event._id);
+  const isEventCreator = userId === event.organizer?._id.toString();
 
   return (
     <div className="group relative flex min-h-[380px] w-full max-w-[400px] flex-col overflow-hidden rounded-xl bg-white dark:bg-black shadow-md transition-all hover:shadow-lg md:min-h-[438px]">
@@ -61,10 +66,13 @@ export default function Card({event, hasOrderLink, hidePrice}: CardProps) {
         </Link>
 
         <div className="flex-between w-full">
-          <p className="p-medium-14 md:p-medium-16 text-grey-600">
-            {event.organizer.firstName} {event.organizer.lastName}
+          <p className="flex flex-col p-medium-14 md:p-medium-16 text-grey-600">
+            Enrollments:
+            <span className="text-primary font-bold">
+              {participants.toString().padStart(5, "0")}
+            </span>
           </p>
-          {hasOrderLink && (
+          {hasOrderLink ? (
             <Link href={`/orders?eventId=${event._id}`} className="flex gap-2">
               <p className="text-primary-500">Order Details</p>
               <Image
@@ -74,6 +82,13 @@ export default function Card({event, hasOrderLink, hidePrice}: CardProps) {
                 height={10}
               />
             </Link>
+          ) : (
+            <p className="text-end flex flex-col p-medium-14 md:p-medium-16 text-grey-600">
+              Organizer:
+              <span className="text-primary font-bold">
+                @{event.organizer?.username}
+              </span>
+            </p>
           )}
         </div>
       </div>

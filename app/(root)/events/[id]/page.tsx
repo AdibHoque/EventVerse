@@ -26,7 +26,7 @@ export async function generateMetadata(
   const event = await getEventById(id);
   return {
     title: `Event Details - ${event.title} - EventVerse`,
-    description: `${event.description}\nJoin the ${event.title} event, organized by ${event.organizer.firstName} ${event.organizer.lastName}.`,
+    description: `${event.description}\nJoin the ${event.title} event, organized by @${event.organizer?.username}.`,
     icons: {
       icon: "/assets/images/logo.svg",
       shortcut: "/assets/images/logo.svg",
@@ -35,7 +35,7 @@ export async function generateMetadata(
       title: `Event Details - ${event.title} - EventVerse`,
       description:
         event.description ||
-        `Don't miss out on ${event.title} hosted by ${event.organizer.firstName} ${event.organizer.lastName}.`,
+        `Don't miss out on ${event.title} hosted by @${event.organizer?.username}.`,
       url: `https://www.eventverse.com/event/${id}`,
       images: [
         {
@@ -53,7 +53,7 @@ export async function generateMetadata(
       title: `Event Details - ${event.title} - EventVerse`,
       description:
         event.description ||
-        `Join us for ${event.title}, hosted by ${event.organizer.firstName} ${event.organizer.lastName}.`,
+        `Join us for ${event.title}, hosted by ${event.organizer?.username}.`,
       images: [event.imageUrl],
     },
   };
@@ -100,7 +100,7 @@ export default async function EventDetails({
                 <p className="p-medium-18 ml-2 mt-2 sm:mt-0">
                   By{" "}
                   <span className="text-primary-500 ">
-                    {event.organizer.firstName} {event.organizer.lastName}
+                    @{event.organizer?.username}
                   </span>
                 </p>
               </div>
