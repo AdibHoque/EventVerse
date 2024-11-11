@@ -19,9 +19,8 @@ function MobileNav() {
       <Sheet>
         <SheetTrigger className="align-middle">
           <Menu className="size-6" />
-          {/* <Image src="/assets/icons/menu.svg" className="bg-white" alt="menu" /> */}
         </SheetTrigger>
-        <SheetContent className="flex flex-col gap-6 bg-white dark:bg-black md:hidden">
+        <SheetContent className="flex flex-col gap-6 border-gray-100 dark:border-gray-700 bg-white dark:bg-black md:hidden">
           <Link href="/" className="w-36">
             <EventVerseLogo />
           </Link>

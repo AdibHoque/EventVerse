@@ -28,11 +28,11 @@ export default async function Home({searchParams}: SearchParamProps) {
         <div className="wrapper grid grid-cols-1 gap-5 md:grid-cols-2 2xl:gap-0">
           <div className="flex flex-col justify-center gap-8">
             <h1 className="h1-bold">
-              Host, Connect, Celebrate: Your Events, Our Platfrom!
+              Create, Connect, Celebrate: Your Event, Our Platform!
             </h1>
             <p className="p-regular-20 md:p-regular-24">
-              Book and learn helpful tips from 4,269 mentors in world-class
-              corporates with our global community.
+              Host events or grab tickets to exclusive events, all in one place.
+              Your go-to platform for events and unforgettable experiences.
             </p>
             <Button size="lg" asChild className="button w-full sm:w-fit">
               <Link href="#events">Explore Now</Link>
@@ -65,8 +65,8 @@ export default async function Home({searchParams}: SearchParamProps) {
           emptyStateSubtext="Come back later"
           collectionType="All_Events"
           limit={6}
-          page={1}
-          totalPages={1}
+          page={page}
+          totalPages={events?.totalPages}
         />
       </section>
     </>

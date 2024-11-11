@@ -57,7 +57,7 @@ export default async function ProfilePage({searchParams}: SearchParamProps) {
           emptyTitle="No Event have been organized yet"
           emptyStateSubtext="You can create one anytime you want"
           collectionType="Events_Organized"
-          limit={6}
+          limit={3}
           page={eventsPage}
           urlParamName="eventsPage"
           totalPages={organizedEvents?.totalPages}

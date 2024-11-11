@@ -11,7 +11,6 @@ import {getAllCategories} from "@/lib/actions/category.actions";
 import {ICategory} from "@/lib/database/models/category.model";
 import {formUrlQuery, removeKeysFromQuery} from "@/lib/utils";
 import {List} from "lucide-react";
-import Image from "next/image";
 import {useRouter, useSearchParams} from "next/navigation";
 import {useEffect, useState} from "react";
 
@@ -19,6 +18,7 @@ export default function CategoryFilter() {
   const [categories, setCategories] = useState<ICategory[]>([]);
   const router = useRouter();
   const searchParams = useSearchParams();
+  const category = (searchParams?.get("category") as string) || "";
 
   useEffect(() => {
     const getCategories = async () => {
@@ -50,7 +50,10 @@ export default function CategoryFilter() {
   return (
     <div className="flex-center min-h-[54px] w-full overflow-hidden rounded-full bg-gray-50 dark:bg-black px-4 py-2">
       <List className="size-6 text-gray-500" />
-      <Select onValueChange={(value: string) => onCategoryChange(value)}>
+      <Select
+        defaultValue={category}
+        onValueChange={(value: string) => onCategoryChange(value)}
+      >
         <SelectTrigger className="select-field text-gray-500">
           <SelectValue placeholder="Category" />
         </SelectTrigger>

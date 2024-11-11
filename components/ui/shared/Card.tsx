@@ -44,9 +44,11 @@ export default function Card({event, hasOrderLink, hidePrice}: CardProps) {
             <span className="p-semibold-14 w-min rounded-full bg-green-100 px-4 py-1 text-green-600">
               {event.isFree ? "Free" : `$${event.price}`}
             </span>
-            <p className="p-semibold-14 w-min rounded-full bg-grey-500/10 px-4 py-1 text-grey-500">
-              {event.category.name}
-            </p>
+            <Link href={`/?category=${event.category.name}#events`}>
+              <p className="p-semibold-14 hover:text-primary w-min rounded-full bg-grey-500/10 px-4 py-1 text-grey-500">
+                #{event.category.name}
+              </p>
+            </Link>
           </div>
         )}
         <p className="p-medium-16 md:p-medium-18 text-grey-500">
