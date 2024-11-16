@@ -25,10 +25,10 @@ export default async function Home({searchParams}: SearchParamProps) {
         id="hero"
         className="bg-dotted-pattern bg-primary-50 dark:bg-black/15 bg-contain py-5 md:py-10"
       >
-        <div className="wrapper grid grid-cols-1 gap-5 md:grid-cols-2 2xl:gap-0">
+        <div className="wrapper grid grid-cols-1 gap-5 md:grid-cols-2 justify-between 2xl:gap-0">
           <div className="flex flex-col justify-center gap-8">
-            <h1 className="h1-bold">
-              Create, Connect, Celebrate: Your Event, Our Platform!
+            <h1 className="h1-bold text-primary">
+              Create & Connect: Your Event, Our Platform!
             </h1>
             <p className="p-regular-20 md:p-regular-24">
               Host events or grab tickets to exclusive events, all in one place.
@@ -41,9 +41,9 @@ export default async function Home({searchParams}: SearchParamProps) {
           <Image
             src="/assets/images/hero.png"
             alt="hero"
-            width={1000}
+            width={1200}
             height={1000}
-            className="max-h-[80vh] object-contain object-center 2xl:max-h-[50vh]"
+            className="max-h-[80vh] object-contain object-center lg:object-right 2xl:max-h-[50vh]"
           />
         </div>
       </section>
@@ -61,8 +61,8 @@ export default async function Home({searchParams}: SearchParamProps) {
         </div>
         <Collection
           data={events?.data}
-          emptyTitle="Not Event Found"
-          emptyStateSubtext="Come back later"
+          emptyTitle="No Event Found"
+          emptyStateSubtext="Unable to fetch any Events"
           collectionType="All_Events"
           limit={6}
           page={page}

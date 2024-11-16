@@ -85,9 +85,12 @@ export default async function Card({
           ) : (
             <p className="text-end flex flex-col p-medium-14 md:p-medium-16 text-grey-600">
               Organizer:
-              <span className="text-primary font-bold">
+              <Link
+                href={`/profile/${event.organizer?.username}`}
+                className="text-primary font-bold"
+              >
                 @{event.organizer?.username}
-              </span>
+              </Link>
             </p>
           )}
         </div>

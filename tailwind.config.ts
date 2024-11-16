@@ -20,9 +20,9 @@ module.exports = withUt({
     extend: {
       colors: {
         primary: {
-          500: "#624CF5",
+          500: "#A855F7",
           50: " #F6F8FD",
-          DEFAULT: "#624CF5",
+          DEFAULT: "#A855F7",
           foreground: "hsl(var(--primary-foreground))",
         },
         coral: {
