@@ -43,7 +43,7 @@ export default async function Home({searchParams}: SearchParamProps) {
             alt="hero"
             width={1200}
             height={1000}
-            className="max-h-[80vh] object-contain object-center lg:object-right 2xl:max-h-[50vh]"
+            className="max-h-[80vh] object-cover md:object-contain object-center lg:object-right 2xl:max-h-[50vh]"
           />
         </div>
       </section>
