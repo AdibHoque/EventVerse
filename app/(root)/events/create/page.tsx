@@ -34,8 +34,8 @@ export const metadata: Metadata = {
   },
 };
 
-export default function CreateEvent() {
-  const {sessionClaims} = auth();
+export default async function CreateEvent() {
+  const {sessionClaims} = await auth();
   const userId = sessionClaims?.userId as string;
   return (
     <>

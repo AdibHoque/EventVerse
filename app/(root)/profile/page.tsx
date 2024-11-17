@@ -3,7 +3,7 @@ import Collection from "@/components/ui/shared/Collection";
 import {getEventsByUser} from "@/lib/actions/event.actions";
 import {getOrdersByUser} from "@/lib/actions/order.actions";
 import {IOrder} from "@/lib/database/models/order.model";
-import {SearchParamProps} from "@/types";
+import {SearchParams} from "@/types";
 import {auth} from "@clerk/nextjs/server";
 import {Metadata} from "next";
 import Link from "next/link";
@@ -40,9 +40,10 @@ export const metadata: Metadata = {
   },
 };
 
-export default async function ProfilePage({searchParams}: SearchParamProps) {
-  const {sessionClaims} = auth();
+export default async function ProfilePage(props: {searchParams: SearchParams}) {
+  const {sessionClaims} = await auth();
   const userId = sessionClaims?.userId as string;
+  const searchParams = await props.searchParams;
 
   const ordersPage = Number(searchParams?.ordersPage) || 1;
   const eventsPage = Number(searchParams?.eventssPage) || 1;
