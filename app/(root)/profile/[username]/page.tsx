@@ -4,21 +4,18 @@ import {getEventsByUser} from "@/lib/actions/event.actions";
 import {getOrdersByUser} from "@/lib/actions/order.actions";
 import {getUserByUsername} from "@/lib/actions/user.actions";
 import {IOrder} from "@/lib/database/models/order.model";
-import {SearchParamProps} from "@/types";
+import {SearchParams, UsernameParams} from "@/types";
 import Link from "next/link";
 import React from "react";
 
-type Params = {
-  params: {
-    username: string;
-  };
-  searchParams: {[key: string]: string | string[] | undefined};
-};
+export default async function OthersProfile(props: {
+  params: UsernameParams;
+  searchParams: SearchParams;
+}) {
+  const params = await props.params;
+  const searchParams = await props.searchParams;
+  const {username} = params;
 
-export default async function OthersProfile({
-  params: {username},
-  searchParams,
-}: Params) {
   const user = await getUserByUsername(username);
   const userId = user._id;
   const ordersPage = Number(searchParams?.ordersPage) || 1;

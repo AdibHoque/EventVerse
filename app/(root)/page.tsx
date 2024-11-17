@@ -3,11 +3,12 @@ import CategoryFilter from "@/components/ui/shared/CategoryFilter";
 import Collection from "@/components/ui/shared/Collection";
 import Search from "@/components/ui/shared/Search";
 import {getAllEvents} from "@/lib/actions/event.actions";
-import {SearchParamProps} from "@/types";
+import {SearchParams} from "@/types";
 import Image from "next/image";
 import Link from "next/link";
 
-export default async function Home({searchParams}: SearchParamProps) {
+export default async function Home(props: {searchParams: SearchParams}) {
+  const searchParams = await props.searchParams;
   const page = Number(searchParams?.page) || 1;
   const query = (searchParams?.query as string) || "";
   const category = (searchParams?.category as string) || "";

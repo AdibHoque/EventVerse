@@ -5,12 +5,12 @@ import {
   getRelatedEventsByCategory,
 } from "@/lib/actions/event.actions";
 import {formatDateTime} from "@/lib/utils";
-import {SearchParamProps} from "@/types";
 import Image from "next/image";
 import React from "react";
 
 import type {Metadata, ResolvingMetadata} from "next";
 import Link from "next/link";
+import {IdParams, SearchParams} from "@/types";
 
 type Props = {
   params: Promise<{id: string}>;
@@ -59,10 +59,14 @@ export async function generateMetadata(
   };
 }
 
-export default async function EventDetails({
-  params: {id},
-  searchParams,
-}: SearchParamProps) {
+export default async function EventDetails(props: {
+  params: IdParams;
+  searchParams: SearchParams;
+}) {
+  const params = await props.params;
+  const searchParams = await props.searchParams;
+  const {id} = params;
+
   const event = await getEventById(id);
 
   const relatedEvents = await getRelatedEventsByCategory({

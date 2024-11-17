@@ -17,7 +17,7 @@ export default async function Card({
   hasOrderLink,
   hidePrice,
 }: CardProps) {
-  const {sessionClaims} = auth();
+  const {sessionClaims} = await auth();
   const userId = sessionClaims?.userId as string;
   const participants = await getOrderCountByEvent(event._id);
   const isEventCreator = userId === event.organizer?._id.toString();
@@ -94,6 +94,14 @@ export default async function Card({
             </p>
           )}
         </div>
+        {hidePrice && (
+          <h1 className="text-primary font-bold flex justify-between items-center">
+            Ticket ID:{" "}
+            <span className="text-grey-500 text-xs md:text-sm">
+              {event._id}
+            </span>
+          </h1>
+        )}
       </div>
     </div>
   );

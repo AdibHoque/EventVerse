@@ -1,5 +1,6 @@
 import EventForm from "@/components/ui/shared/EventForm";
 import {getEventById} from "@/lib/actions/event.actions";
+import {IdParams} from "@/types";
 import {auth} from "@clerk/nextjs/server";
 import {Metadata} from "next";
 
@@ -35,15 +36,12 @@ export const metadata: Metadata = {
   },
 };
 
-type UpdateEventProps = {
-  params: {
-    id: string;
-  };
-};
+export default async function UpdateEvent(props: {params: IdParams}) {
+  const params = await props.params;
+  const {id} = params;
 
-export default async function UpdateEvent({params: {id}}: UpdateEventProps) {
   const event = await getEventById(id);
-  const {sessionClaims} = auth();
+  const {sessionClaims} = await auth();
   const userId = sessionClaims?.userId as string;
 
   if (event.organizer._id.toString() === userId) {

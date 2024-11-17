@@ -1,10 +1,11 @@
 import {formatDateTime, formatPrice} from "@/lib/utils";
-import {SearchParamProps} from "@/types";
+import {SearchParams} from "@/types";
 import {IOrderItem} from "@/lib/database/models/order.model";
 import {getOrdersByEvent} from "@/lib/actions/order.actions";
 import Search from "@/components/ui/shared/Search";
 
-export default async function OrdersPage({searchParams}: SearchParamProps) {
+export default async function OrdersPage(props: {searchParams: SearchParams}) {
+  const searchParams = await props.searchParams;
   const eventId = (searchParams?.eventId as string) || "";
   const searchText = (searchParams?.query as string) || "";
 
