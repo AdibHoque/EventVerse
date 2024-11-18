@@ -149,6 +149,8 @@ export type RemoveUrlQueryParams = {
 //   searchParams: Promise<{[key: string]: string | string[] | undefined}>;
 // };
 
-export type SearchParams = {[key: string]: string | string[] | undefined};
+export type SearchParams = Promise<{
+  [key: string]: string | string[] | undefined;
+}>;
 export type UsernameParams = Promise<{username: string}>;
 export type IdParams = Promise<{id: string}>;

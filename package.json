@@ -24,7 +24,7 @@
     "@stripe/stripe-js": "^4.9.0",
     "@svgr/webpack": "^8.1.0",
     "@types/react-datepicker": "^7.0.0",
-    "@uploadthing/react": "^7.1.0",
+    "@uploadthing/react": "^7.1.1",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
     "lucide-react": "^0.446.0",
@@ -42,7 +42,7 @@
     "svix": "^1.37.0",
     "tailwind-merge": "^2.5.2",
     "tailwindcss-animate": "^1.0.7",
-    "uploadthing": "^7.2.0",
+    "uploadthing": "^7.3.0",
     "zod": "^3.23.8"
   },
   "devDependencies": {
