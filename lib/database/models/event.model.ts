@@ -19,6 +19,7 @@ export interface IEvent extends Document {
     lastName: string;
     username: string;
   };
+  orderId?: string;
 }
 
 const EventSchema = new Schema({

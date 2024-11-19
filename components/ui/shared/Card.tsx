@@ -98,7 +98,7 @@ export default async function Card({
           <h1 className="text-primary font-bold flex justify-between items-center">
             Ticket ID:{" "}
             <span className="text-grey-500 text-xs md:text-sm">
-              {event._id}
+              {event.orderId}
             </span>
           </h1>
         )}

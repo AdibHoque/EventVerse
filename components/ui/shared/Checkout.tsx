@@ -1,7 +1,7 @@
 import {IEvent} from "@/lib/database/models/event.model";
 import {Button} from "../button";
 import {loadStripe} from "@stripe/stripe-js";
-import {useEffect} from "react";
+import {Suspense, useEffect} from "react";
 import {checkoutOrder} from "@/lib/actions/order.actions";
 
 loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY!);
@@ -26,7 +26,8 @@ export default function Checkout({
     }
   }, []);
 
-  async function onCheckout() {
+  async function onCheckout(e: React.FormEvent) {
+    e.preventDefault();
     const order = {
       eventTitle: event.title,
       eventId: event._id,
@@ -34,13 +35,30 @@ export default function Checkout({
       price: event.price,
       buyerId: userId,
     };
-    await checkoutOrder(order);
+    try {
+      await checkoutOrder(order);
+    } catch (error) {
+      console.error("Checkout failed:", error);
+    }
   }
   return (
-    <form action={onCheckout} method="post">
-      <Button type="submit" role="link" size="lg" className="button sm:w-fit">
-        {event.isFree ? "Enroll for Free" : "Buy Ticket"}
-      </Button>
+    <form onSubmit={onCheckout} method="post">
+      <Suspense
+        fallback={
+          <Button
+            type="submit"
+            role="link"
+            size="lg"
+            className="button sm:w-fit"
+          >
+            Checking Info
+          </Button>
+        }
+      >
+        <Button type="submit" role="link" size="lg" className="button sm:w-fit">
+          {event.isFree ? "Enroll for Free" : "Buy Ticket"}
+        </Button>
+      </Suspense>
     </form>
   );
 }

@@ -21,10 +21,13 @@ export default async function OthersProfile(props: {
   const ordersPage = Number(searchParams?.ordersPage) || 1;
   const eventsPage = Number(searchParams?.eventssPage) || 1;
 
-  const organizedEvents = await getEventsByUser({userId, page: 1});
-  const orders = await getOrdersByUser({userId, page: 1});
-  const orderedEvents = orders?.data.map((order: IOrder) => order.event) || [];
-
+  const organizedEvents = await getEventsByUser({userId, page: eventsPage});
+  const orders = await getOrdersByUser({userId, page: ordersPage});
+  const orderedEvents =
+    orders?.data.map((order: IOrder) => ({
+      ...order.event,
+      orderId: order._id,
+    })) || [];
   return (
     <>
       <section className="bg-primary-50 dark:bg-black/15 bg-dotted-pattern bg-cover bg-center py-5 md:py-10">

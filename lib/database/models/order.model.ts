@@ -1,6 +1,7 @@
 import {Schema, model, models, Document} from "mongoose";
 
 export interface IOrder extends Document {
+  _id: string;
   createdAt: Date;
   stripeId: string;
   totalAmount: string;

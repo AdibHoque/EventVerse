@@ -46,11 +46,16 @@ export default async function ProfilePage(props: {searchParams: SearchParams}) {
   const searchParams = await props.searchParams;
 
   const ordersPage = Number(searchParams?.ordersPage) || 1;
-  const eventsPage = Number(searchParams?.eventssPage) || 1;
+  const eventsPage = Number(searchParams?.eventsPage) || 1;
 
-  const organizedEvents = await getEventsByUser({userId, page: 1});
-  const orders = await getOrdersByUser({userId, page: 1});
-  const orderedEvents = orders?.data.map((order: IOrder) => order.event) || [];
+  const organizedEvents = await getEventsByUser({userId, page: eventsPage});
+  const orders = await getOrdersByUser({userId, page: ordersPage});
+
+  const orderedEvents =
+    orders?.data.map((order: IOrder) => ({
+      ...order.event,
+      orderId: order._id,
+    })) || [];
 
   return (
     <>
