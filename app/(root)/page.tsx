@@ -1,4 +1,5 @@
 import {Button} from "@/components/ui/button";
+import BannerSkeleton from "@/components/ui/shared/BannerSkeleton";
 import CategoryFilter from "@/components/ui/shared/CategoryFilter";
 import Collection from "@/components/ui/shared/Collection";
 import Search from "@/components/ui/shared/Search";
@@ -6,6 +7,7 @@ import {getAllEvents} from "@/lib/actions/event.actions";
 import {SearchParams} from "@/types";
 import Image from "next/image";
 import Link from "next/link";
+import {Suspense} from "react";
 
 export default async function Home(props: {searchParams: SearchParams}) {
   const searchParams = await props.searchParams;
@@ -39,13 +41,16 @@ export default async function Home(props: {searchParams: SearchParams}) {
               <Link href="#events">Explore Now</Link>
             </Button>
           </div>
-          <Image
-            src="/assets/images/hero.png"
-            alt="hero"
-            width={1200}
-            height={1000}
-            className="max-h-[80vh] object-cover md:object-contain object-center lg:object-right 2xl:max-h-[50vh]"
-          />
+
+          <Suspense fallback={<BannerSkeleton />}>
+            <Image
+              src="/assets/images/hero.png"
+              alt="hero"
+              width={1200}
+              height={1000}
+              className="max-h-[80vh] object-cover md:object-contain object-center lg:object-right 2xl:max-h-[50vh]"
+            />
+          </Suspense>
         </div>
       </section>
       <section

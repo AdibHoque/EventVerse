@@ -10,6 +10,59 @@ The platform features advanced tools like **Clerk** for authentication, **Upload
 
 ## 🚀 Features
 
+1. **Dynamic Homepage**
+
+   - A captivating hero section introducing the platform.
+   - Discover events with advanced filters for categories, pagination, and a robust search functionality.
+
+2. **Detailed Event Pages**
+
+   - View comprehensive details of individual events, including descriptions and organizer information.
+   - Securely purchase tickets or enroll in events using **Stripe**.
+   - Explore related events in the "Related Events" section.
+
+3. **Event Creation**
+
+   - Effortlessly create new events using **react-hook-form** and **Zod** for validation.
+   - Add media with ease through **UploadThing** for a polished event listing.
+
+4. **Event Management**
+
+   - Update event details, ensuring organizers have complete control over their listings.
+   - Keep events up-to-date with user-friendly editing tools.
+
+5. **User Profiles**
+
+   - **Your Profile**: Access and manage your purchased tickets and organized events.
+   - **Other Profiles**: View other users’ public profiles, including their hosted events and tickets.
+
+6. **Secure and Seamless Authentication**
+
+   - Powered by **Clerk**, ensuring a smooth and safe login and sign-up experience.
+   - Personalize your experience with protected routes and account-specific features.
+
+7. **Media and Payment Integration**
+
+   - Store and manage event media efficiently using **UploadThing**.
+   - Enjoy a seamless and secure payment experience with **Stripe** for ticket purchases.
+
+8. **Accessible and Modern Design**
+
+   - A stunning interface built with **ShadCN UI**, ensuring accessibility and responsiveness.
+   - Supports light/dark mode with **next-themes** for a personalized viewing experience.
+
+9. **Real-Time Updates**
+
+   - Experience dynamic updates across the platform, ensuring the latest events and details are always available.
+
+10. **Scalable Tech Foundation**
+    - Built with **Next.js 15** and **TypeScript** for a future-proof, scalable platform.
+    - Enhanced styling and animations with **TailwindCSS** and **tailwindcss-animate**.
+
+---
+
+## 🚀 Routes
+
 ### 🌟 Homepage (`/`)
 
 - **Hero Section**: A visually appealing introduction to the platform.

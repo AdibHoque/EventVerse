@@ -2,7 +2,7 @@ import {Skeleton} from "@/components/ui/skeleton";
 
 export function SkeletonCard() {
   return (
-    <div className="group relative flex min-h-[380px] w-full max-w-[400px] flex-col overflow-hidden rounded-xl bg-white dark:bg-black shadow-md">
+    <div className="group mx-auto relative flex min-h-[380px] w-full max-w-[400px] flex-col overflow-hidden rounded-xl bg-white dark:bg-black shadow-md">
       <Skeleton className="h-[230px] w-full bg-gray-300 dark:bg-gray-600" />
       <div className="flex flex-col min-h-[230px] p-5 gap-3">
         <div className="flex gap-2">

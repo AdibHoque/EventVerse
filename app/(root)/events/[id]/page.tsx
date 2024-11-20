@@ -64,7 +64,7 @@ export async function generateMetadata(
 function EventDetailsSkeleton() {
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 gap-6 p-6 2xl:max-w-6xl">
-      <Skeleton className="h-[80vh] w-full rounded-lg bg-gray-300" />
+      <Skeleton className="h-[60vh] lg:h-[80vh] w-full rounded-lg bg-gray-300" />
       <div className="flex flex-col gap-6 p-4">
         <Skeleton className="h-8 w-3/4" />
         <Skeleton className="h-6 w-1/2" />
