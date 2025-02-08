@@ -15,21 +15,22 @@ The platform features advanced tools like **Clerk** for authentication, **Upload
    - A captivating hero section introducing the platform.
    - Discover events with advanced filters for categories, pagination, and a robust search functionality.
 
-2. **Detailed Event Pages**
 
-   - View comprehensive details of individual events, including descriptions and organizer information.
-   - Securely purchase tickets or enroll in events using **Stripe**.
-   - Explore related events in the "Related Events" section.
-
-3. **Event Creation**
+2. **Event Creation**
 
    - Effortlessly create new events using **react-hook-form** and **Zod** for validation.
    - Add media with ease through **UploadThing** for a polished event listing.
 
-4. **Event Management**
+3. **Event Management**
 
    - Update event details, ensuring organizers have complete control over their listings.
    - Keep events up-to-date with user-friendly editing tools.
+
+4. **Detailed Event Pages**
+
+   - View comprehensive details of individual events, including descriptions and organizer information.
+   - Securely purchase tickets or enroll in events using **Stripe**.
+   - Explore related events in the "Related Events" section.
 
 5. **User Profiles**
 

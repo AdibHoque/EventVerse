@@ -21,7 +21,13 @@ export async function POST(request: Request) {
 
   // CREATE
   if (eventType === "checkout.session.completed") {
-    const {id, amount_total, metadata} = event.data.object;
+    const {id, amount_total, metadata, success_url} = event.data.object;
+
+    if (
+      !success_url &&
+      !(success_url == "https://eventversely.vercel.app/profile")
+    )
+      return NextResponse.json({message: "Payment for a different service."});
 
     const order = {
       stripeId: id,
